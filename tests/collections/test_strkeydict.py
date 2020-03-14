@@ -1,6 +1,6 @@
 import unittest
 
-from fluent_python.mapping.StrKeyDict import StrKeyDict01, StrKeyDict
+from fluent_python.collections.StrKeyDict import StrKeyDict01, StrKeyDict
 
 
 class StrKeyDictTest(unittest.TestCase):
