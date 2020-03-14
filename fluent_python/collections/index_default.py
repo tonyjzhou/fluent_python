@@ -12,7 +12,7 @@ def output(index):
         print(word, index[word])
 
 
-def index_file(file_name):
+def index_file(file_name: str) -> dict:
     index = collections.defaultdict(list)
 
     with open(file_name) as f:

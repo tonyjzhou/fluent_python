@@ -10,7 +10,7 @@ def main():
     process("str_key_dict.py")
 
 
-def process(file_name):
+def process(file_name: str):
     display(file_name, tail(file_name))
 
 
