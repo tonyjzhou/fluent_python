@@ -7,7 +7,7 @@ def tail(file_name):
 
 
 def main():
-    process("StrKeyDict.py")
+    process("str_key_dict.py")
 
 
 def process(file_name):

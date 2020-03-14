@@ -3,7 +3,7 @@ import re
 
 
 def main():
-    index = index_file("StrKeyDict.py")
+    index = index_file("str_key_dict.py")
     output(index)
 
 
