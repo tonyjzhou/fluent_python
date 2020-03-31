@@ -25,6 +25,10 @@ class Stack:
     >>> s.push(2)
     >>> s.top()
     2
+
+    >>> s.push(1)
+    >>> s.top()
+    1
     """
 
     def __init__(self):
