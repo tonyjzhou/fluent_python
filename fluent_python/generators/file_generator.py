@@ -11,7 +11,7 @@ def print_content(path):
         print("-" * len(str(path)))
 
         for line in file:
-            print(line[:len(line) - 1])
+            print(line[: len(line) - 1])
         print()
 
 
