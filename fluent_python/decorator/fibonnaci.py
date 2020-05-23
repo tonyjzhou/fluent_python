@@ -5,6 +5,7 @@ def clock(fun):
     @functools.wraps(fun)
     def clock_fun(*args, **kwargs):
         import time
+
         time1 = time.time()
         ret = fun(*args, **kwargs)
         time2 = time.time()
@@ -13,12 +14,12 @@ def clock(fun):
 
         all_args = []
         if args:
-            all_args.append(', '.join([repr(a) for a in args]))
+            all_args.append(", ".join([repr(a) for a in args]))
         if kwargs:
-            all_args.append(', '.join([f'{k}={v}' for k, v in sorted(kwargs)]))
-        arg_str = ', '.join(all_args)
+            all_args.append(", ".join([f"{k}={v}" for k, v in sorted(kwargs)]))
+        arg_str = ", ".join(all_args)
 
-        print('[%0.8fs] %s(%s) -> %r ' % (elapsed, name, arg_str, ret))
+        print("[%0.8fs] %s(%s) -> %r " % (elapsed, name, arg_str, ret))
 
         return ret
 
