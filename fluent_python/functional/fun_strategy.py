@@ -1,5 +1,8 @@
+import inspect
 from dataclasses import dataclass
 from typing import Callable
+
+from fluent_python.functional import promotions
 
 
 @dataclass
@@ -40,27 +43,8 @@ class Order:
         return fmt.format(self.total(), self.due())
 
 
-def fidelity_promotion(order):
-    return order.total() * 0.05 if order.customer.fidelity >= 1000 else 0
-
-
-def bulk_item_promotion(order):
-    discount = 0
-    for item in order.cart:
-        if item.quantity >= 20:
-            discount += item.total() * 0.1
-    return discount
-
-
-def large_order_promotion(order):
-    distinct_items = {item.quantity for item in order.cart}
-    if len(distinct_items) >= 10:
-        return order.total() * 0.07
-    return 0
-
-
-promotions = [m for m in globals() if m.endswith("_promotion") and m != "best_promotion"]
+ps = [func for name, func in inspect.getmembers(promotions, inspect.isfunction)]
 
 
 def best_promotion(order: Order) -> int:
-    return max(p(order) for p in promotions)
+    return max(p(order) for p in ps)
