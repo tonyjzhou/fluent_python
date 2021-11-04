@@ -57,3 +57,10 @@ def large_order_promo(order):
     if len(distinct_items) >= 10:
         return order.total() * 0.07
     return 0
+
+
+promotions = [fidelity_promo, bulk_item_promo, large_order_promo]
+
+
+def best_promotion(order: Order) -> int:
+    return max(p(order) for p in promotions)
