@@ -40,11 +40,11 @@ class Order:
         return fmt.format(self.total(), self.due())
 
 
-def fidelity_promo(order):
+def fidelity_promotion(order):
     return order.total() * 0.05 if order.customer.fidelity >= 1000 else 0
 
 
-def bulk_item_promo(order):
+def bulk_item_promotion(order):
     discount = 0
     for item in order.cart:
         if item.quantity >= 20:
@@ -52,14 +52,14 @@ def bulk_item_promo(order):
     return discount
 
 
-def large_order_promo(order):
+def large_order_promotion(order):
     distinct_items = {item.quantity for item in order.cart}
     if len(distinct_items) >= 10:
         return order.total() * 0.07
     return 0
 
 
-promotions = [fidelity_promo, bulk_item_promo, large_order_promo]
+promotions = [m for m in globals() if m.endswith("_promotion") and m != "best_promotion"]
 
 
 def best_promotion(order: Order) -> int:
