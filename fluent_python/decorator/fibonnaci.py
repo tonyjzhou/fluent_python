@@ -26,7 +26,7 @@ def clock(fun):
     return clock_fun
 
 
-@functools.lru_cache
+@functools.cache
 @clock
 def fib(n):
     if n <= 0:
@@ -36,4 +36,4 @@ def fib(n):
     return fib(n - 1) + fib(n - 2)
 
 
-fib(40)
+fib(100)
