@@ -3,7 +3,7 @@ from array import array
 
 
 class Vector2d:
-    typecode = 'd'
+    type_code = 'd'
 
     def __init__(self, x, y):
         self.x = float(x)
@@ -20,7 +20,7 @@ class Vector2d:
         return str(tuple(self))
 
     def __bytes__(self):
-        return bytes([ord(self.typecode)]) + bytes(array(self.typecode, self))
+        return bytes([ord(self.type_code)]) + bytes(array(self.type_code, self))
 
     def __eq__(self, other):
         return tuple(self) == tuple(other)
@@ -30,3 +30,9 @@ class Vector2d:
 
     def __bool__(self):
         return bool(abs(self))
+
+    @classmethod
+    def from_bytes(cls, octets):
+        type_code = chr(octets[0])
+        content = memoryview(octets[1:]).cast(type_code)
+        return cls(*content)
