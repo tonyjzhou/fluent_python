@@ -1,3 +1,4 @@
+import reprlib
 from array import array
 
 
@@ -11,7 +12,9 @@ class Vector:
         return iter(self.__components)
 
     def __repr__(self):
-        pass
+        components = reprlib.repr(self.__components)
+        components = components[components.find('['):-1]
+        return f"Vector({components})"
 
     def __str__(self):
         pass
