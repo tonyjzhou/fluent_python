@@ -19,6 +19,9 @@ class Vector:
     def __str__(self):
         return f"Vector{tuple(self)}"
 
+    def __bytes__(self):
+        return bytes([ord(self.type_code)]) + bytes(self.__components)
+
     def __abs__(self):
         pass
 
@@ -29,9 +32,6 @@ class Vector:
         pass
 
     def __eq__(self, other):
-        pass
-
-    def __bytes__(self):
         pass
 
     def from_byte(self, byte):
