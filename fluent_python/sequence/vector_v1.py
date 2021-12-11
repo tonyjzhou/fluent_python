@@ -17,7 +17,7 @@ class Vector:
         return f"Vector({components})"
 
     def __str__(self):
-        pass
+        return f"Vector{tuple(self)}"
 
     def __abs__(self):
         pass
