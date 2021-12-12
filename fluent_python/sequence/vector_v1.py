@@ -1,3 +1,4 @@
+import math
 import reprlib
 from array import array
 
@@ -29,7 +30,7 @@ class Vector:
         return hash(tuple(self))
 
     def __abs__(self):
-        pass
+        return math.sqrt(sum(x * x for x in self))
 
     def __bool__(self):
         pass
