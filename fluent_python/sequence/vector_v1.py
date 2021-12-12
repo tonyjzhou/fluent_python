@@ -33,7 +33,7 @@ class Vector:
         return math.sqrt(sum(x * x for x in self))
 
     def __bool__(self):
-        pass
+        return bool(abs(self))
 
     def from_byte(self, byte):
         pass
