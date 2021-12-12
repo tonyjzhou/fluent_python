@@ -35,5 +35,8 @@ class Vector:
     def __bool__(self):
         return bool(abs(self))
 
-    def from_byte(self, byte):
-        pass
+    @classmethod
+    def from_bytes(cls, my_bytes):
+        type_code = chr(my_bytes[0])
+        memory_view = memoryview(my_bytes[1:]).cast(type_code)
+        return cls(memory_view)
