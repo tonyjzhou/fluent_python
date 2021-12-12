@@ -22,16 +22,16 @@ class Vector:
     def __bytes__(self):
         return bytes([ord(self.type_code)]) + bytes(self.__components)
 
+    def __eq__(self, other):
+        return tuple(self) == tuple(other)
+
+    def __hash__(self):
+        return hash(tuple(self))
+
     def __abs__(self):
         pass
 
     def __bool__(self):
-        pass
-
-    def __hash__(self):
-        pass
-
-    def __eq__(self, other):
         pass
 
     def from_byte(self, byte):
