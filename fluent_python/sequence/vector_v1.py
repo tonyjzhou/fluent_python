@@ -35,6 +35,12 @@ class Vector:
     def __bool__(self):
         return bool(abs(self))
 
+    def __len__(self):
+        return len(self.__components)
+
+    def __getitem__(self, item):
+        return self.__components[item]
+
     @classmethod
     def from_bytes(cls, my_bytes):
         type_code = chr(my_bytes[0])
