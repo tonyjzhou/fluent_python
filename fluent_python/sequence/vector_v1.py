@@ -6,6 +6,7 @@ from array import array
 
 class Vector:
     type_code = 'd'
+    attributes = "xyzt"
 
     def __init__(self, components):
         self.__components = array(self.type_code, components)
@@ -48,6 +49,14 @@ class Vector:
             return self.__components[item]
         else:
             raise TypeError(f"{cls.__name__} indexes must be integers")
+
+    def __getattr__(self, item):
+        cls = type(self)
+        index = cls.attributes.find(item)
+        if len(item) == 1:
+            if 0 <= index < len(self.__components):
+                return self.__components[index]
+        raise AttributeError(f"{cls} doesn't have attribute {item}")
 
     @classmethod
     def from_bytes(cls, my_bytes):
