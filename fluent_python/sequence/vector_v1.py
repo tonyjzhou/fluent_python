@@ -58,6 +58,21 @@ class Vector:
                 return self.__components[index]
         raise AttributeError(f"{cls} doesn't have attribute {item}")
 
+    def __setattr__(self, key, value):
+        cls = type(self)
+
+        if len(key) == 1:
+            if key in cls.attributes:
+                error = f"{key} is a readonly attribute"
+            elif key.islower():
+                error = f"setting a single character lower case attribute {key} is forbidden"
+            else:
+                error = ""
+
+            if error:
+                raise AttributeError(error)
+        super().__setattr__(key, value)
+
     @classmethod
     def from_bytes(cls, my_bytes):
         type_code = chr(my_bytes[0])
