@@ -28,10 +28,17 @@ class Vector:
         return bytes([ord(self.type_code)]) + bytes(self.__components)
 
     def __eq__(self, other):
-        return tuple(self) == tuple(other)
+        # return tuple(self) == tuple(other)
+        if len(self) != len(other):
+            return False
+        for a, b in zip(self, other):
+            if a != b:
+                return False
+        return True
 
     def __hash__(self):
-        hashes = [hash(c) for c in self.__components]
+        # hashes = (hash(c) for c in self.__components)
+        hashes = map(hash, self.__components)
         return functools.reduce(operator.xor, hashes, 0)
 
     def __abs__(self):
