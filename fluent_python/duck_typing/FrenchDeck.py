@@ -12,10 +12,10 @@ class FrenchDeck:
     ranks = ["Diamonds", "Clubs", "Hearts", "Spades"]
 
     def __init__(self):
-        self.__cards = [Card(s, r) for s in self.suites for r in self.ranks]
+        self._cards = [Card(s, r) for s in self.suites for r in self.ranks]
 
     def __len__(self):
-        return len(self.__cards)
+        return len(self._cards)
 
     def __getitem__(self, item):
-        return self.__cards[item]
+        return self._cards[item]
