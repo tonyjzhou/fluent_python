@@ -1,3 +1,4 @@
+import collections
 from dataclasses import dataclass
 
 
@@ -7,7 +8,8 @@ class Card:
     rank: str
 
 
-class FrenchDeck:
+# ABC
+class FrenchDeck2(collections.MutableSequence):
     suites = [str(n) for n in range(2, 11)] + list("JQKA")
     ranks = ["Diamonds", "Clubs", "Hearts", "Spades"]
 
@@ -19,3 +21,12 @@ class FrenchDeck:
 
     def __getitem__(self, item):
         return self._cards[item]
+
+    def __setitem__(self, key, value):
+        self._cards[key] = value
+
+    def __delitem__(self, key):
+        del self._cards[key]
+
+    def insert(self, index, value) -> None:
+        self._cards.insert(index, value)
